@@ -2,6 +2,7 @@ package edu.joyful.cqrs.command.api.aggregate;
 
 import edu.joyful.cqrs.command.api.command.CreateProductCommand;
 import edu.joyful.cqrs.command.api.event.ProductCreateEvent;
+import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
@@ -31,5 +32,13 @@ public class ProductAggregate {
     }
 
     public ProductAggregate() {
+    }
+
+    @EventSourcingHandler
+    public void onCreate(ProductCreateEvent event) {
+        this.productId = event.getProductId();
+        this.name = event.getName();
+        this.price = event.getPrice();
+        this.quantity = event.getQuantity();
     }
 }
