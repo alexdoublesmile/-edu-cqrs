@@ -1,16 +1,17 @@
-package edu.joyful.cqrs.command.api.command;
+package edu.joyful.cqrs.command.api.model.event;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
+import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
 
 @Data
 @Builder
-public class CreateProductCommand {
-
-    @TargetAggregateIdentifier
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProductCreateEvent {
     private String productId;
     private String name;
     private BigInteger price;

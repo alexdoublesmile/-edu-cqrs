@@ -1,4 +1,4 @@
-package edu.joyful.cqrs.command.api.model;
+package edu.joyful.cqrs.command.api.model.dto;
 
 import lombok.Builder;
 import lombok.Data;

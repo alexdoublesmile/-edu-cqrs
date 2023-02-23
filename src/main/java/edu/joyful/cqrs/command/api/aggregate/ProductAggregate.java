@@ -1,7 +1,7 @@
 package edu.joyful.cqrs.command.api.aggregate;
 
-import edu.joyful.cqrs.command.api.command.CreateProductCommand;
-import edu.joyful.cqrs.command.api.event.ProductCreateEvent;
+import edu.joyful.cqrs.command.api.model.command.CreateProductCommand;
+import edu.joyful.cqrs.command.api.model.event.ProductCreateEvent;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
