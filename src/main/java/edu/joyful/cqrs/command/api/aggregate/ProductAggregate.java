@@ -2,6 +2,7 @@ package edu.joyful.cqrs.command.api.aggregate;
 
 import edu.joyful.cqrs.command.api.model.command.CreateProductCommand;
 import edu.joyful.cqrs.command.api.model.event.ProductCreateEvent;
+import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
@@ -18,6 +19,7 @@ public class ProductAggregate {
     private BigInteger price;
     private Integer quantity;
 
+    @CommandHandler
     public ProductAggregate(CreateProductCommand command) {
         // TODO: 23.02.2023 perform validations
 
