@@ -11,21 +11,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-@ProcessingGroup("product")
+//@ProcessingGroup("product")
 public class ProductEventsHandler {
     private final ProductRepository productRepository;
 
     @EventHandler
-    public void on(ProductCreateEvent event) {
+    public void on(ProductCreateEvent event) throws Exception {
         final Product product = new Product();
         BeanUtils.copyProperties(event, product);
 
         productRepository.save(product);
-        throw new RuntimeException("Exception occurs");
+//        throw new Exception("Exception occurs");
     }
 
-    @ExceptionHandler
-    public void handle(Exception exception) throws Exception {
-        throw exception;
-    }
+//    @ExceptionHandler
+//    public void handle(Exception exception) throws Exception {
+//        throw exception;
+//    }
 }

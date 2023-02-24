@@ -13,8 +13,8 @@ public class CqrsApplication {
         SpringApplication.run(CqrsApplication.class, args);
     }
 
-    @Autowired
-    public void configure(EventProcessingConfigurer configurer) {
-        configurer.registerListenerInvocationErrorHandler("product", configuration -> new ProductEventErrorHandler());
-    }
+//    @Autowired
+//    public void configure(EventProcessingConfigurer configurer) {
+//        configurer.registerListenerInvocationErrorHandler("product", configuration -> new ProductEventErrorHandler());
+//    }
 }
