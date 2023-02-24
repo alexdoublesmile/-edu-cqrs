@@ -3,6 +3,9 @@ Content-Type: application/json
 
 {
   "name": "Mango",
-  "price": "200",
-  "quantity": "5"
+  "price": "100",
+  "quantity": "15"
 }
+
+###
+GET http://localhost:8081/products
