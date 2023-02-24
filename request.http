@@ -3,6 +3,6 @@ Content-Type: application/json
 
 {
   "name": "Mango",
-  "price": "100",
-  "quantity": "2"
+  "price": "200",
+  "quantity": "5"
 }
