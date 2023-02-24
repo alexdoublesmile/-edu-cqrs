@@ -18,7 +18,7 @@ public class ProductQueryController {
 
     @GetMapping
     public List<ProductRestModel> getAllProducts() {
-        
+
         return null;
     }
 }
