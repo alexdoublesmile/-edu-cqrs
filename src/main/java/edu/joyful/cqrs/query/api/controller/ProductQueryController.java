@@ -1,7 +1,7 @@
 package edu.joyful.cqrs.query.api.controller;
 
 import edu.joyful.cqrs.command.api.model.dto.ProductRestModel;
-import edu.joyful.cqrs.query.api.controller.query.GetProductsQuery;
+import edu.joyful.cqrs.query.api.query.GetProductsQuery;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
@@ -25,7 +25,7 @@ public class ProductQueryController {
         final List<ProductRestModel> productRestModels = queryGateway
                 .query(getProductsQuery, ResponseTypes.multipleInstancesOf(ProductRestModel.class))
                 .join();
-        
+
         return productRestModels;
     }
 }
