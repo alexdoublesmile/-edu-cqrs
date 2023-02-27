@@ -7,7 +7,7 @@ import java.math.BigInteger;
 
 @Data
 @Builder
-public class ProductRestModel {
+public class ProductDto {
     private String name;
     private BigInteger price;
     private Integer quantity;

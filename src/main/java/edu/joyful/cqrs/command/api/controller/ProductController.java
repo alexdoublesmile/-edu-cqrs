@@ -1,7 +1,7 @@
 package edu.joyful.cqrs.command.api.controller;
 
 import edu.joyful.cqrs.command.api.model.command.CreateProductCommand;
-import edu.joyful.cqrs.command.api.model.dto.ProductRestModel;
+import edu.joyful.cqrs.command.api.model.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,12 +19,12 @@ public class ProductController {
     private final CommandGateway commandGateway;
 
     @PostMapping
-    public String addProduct(@RequestBody ProductRestModel productRestModel) {
+    public String addProduct(@RequestBody ProductDto productDto) {
         final CreateProductCommand command = CreateProductCommand.builder()
                 .productId(UUID.randomUUID().toString())
-                .name(productRestModel.getName())
-                .price(productRestModel.getPrice())
-                .quantity(productRestModel.getQuantity())
+                .name(productDto.getName())
+                .price(productDto.getPrice())
+                .quantity(productDto.getQuantity())
                 .build();
 
         final String result = commandGateway.sendAndWait(command);
