@@ -1,4 +1,4 @@
-package edu.joyful.orderservice.command.api.model;
+package edu.joyful.orderservice.command.api.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

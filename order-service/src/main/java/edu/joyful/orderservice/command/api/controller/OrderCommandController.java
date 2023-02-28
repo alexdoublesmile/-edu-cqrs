@@ -1,6 +1,6 @@
 package edu.joyful.orderservice.command.api.controller;
 
-import edu.joyful.orderservice.command.api.model.OrderRestModel;
+import edu.joyful.orderservice.command.api.model.dto.OrderRestModel;
 import edu.joyful.orderservice.command.api.model.command.CreateOrderCommand;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
