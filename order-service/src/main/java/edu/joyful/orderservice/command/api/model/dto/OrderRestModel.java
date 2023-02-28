@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderRestModel {
+
     private String productId;
     private String userId;
     private String addressId;

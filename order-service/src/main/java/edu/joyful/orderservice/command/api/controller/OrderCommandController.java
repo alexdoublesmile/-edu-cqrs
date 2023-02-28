@@ -25,7 +25,7 @@ public class OrderCommandController {
                 .productId(order.getProductId())
                 .quantity(order.getQuantity())
                 .userId(order.getUserId())
-                .orderStatus()
+                .orderStatus("CREATED")
                 .build();
 
         gateway.sendAndWait(command);
