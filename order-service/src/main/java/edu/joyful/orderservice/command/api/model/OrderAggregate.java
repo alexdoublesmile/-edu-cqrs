@@ -1,5 +1,6 @@
-package edu.joyful.orderservice.command.api.model.command;
+package edu.joyful.orderservice.command.api.model;
 
+import edu.joyful.orderservice.command.api.model.command.CreateOrderCommand;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
