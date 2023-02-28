@@ -2,6 +2,7 @@ package edu.joyful.orderservice.command.api.model.command;
 
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
@@ -30,5 +31,16 @@ public class OrderAggregate {
         BeanUtils.copyProperties(command, event);
 
         AggregateLifecycle.apply(event);
+    }
+
+    @EventSourcingHandler
+    public void on(OrderCreatedEvent event) {
+        orderId = event.getOrderId();
+        productId = event.getProductId();
+        userId = event.getUserId();
+        addressId = event.getAddressId();
+        quantity = event.getQuantity();
+        orderStatus = event.getOrderStatus();
+
     }
 }
