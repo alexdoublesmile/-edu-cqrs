@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>edu.joyful</groupId>
-    <artifactId>cqrs</artifactId>
-    <version>0.0.1</version>
-    <name>cqrs</name>
+    <artifactId>shipment-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>shipment-service</name>
 
     <properties>
         <java.version>11</java.version>
@@ -68,15 +68,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>
