@@ -12,7 +12,7 @@ public class OrderProcessingSaga {
 
     @StartSaga
     @SagaEventHandler(associationProperty = "orderId")
-    public void handle(OrderCreatedEvent event) {
+    public void handleOrderCreated(OrderCreatedEvent event) {
         log.info("OrderCreatedEvent in SAGA for orderId: {}", event.getOrderId());
 
     }
