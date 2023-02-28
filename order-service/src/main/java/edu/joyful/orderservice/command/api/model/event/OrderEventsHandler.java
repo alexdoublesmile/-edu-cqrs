@@ -8,6 +8,6 @@ public class OrderEventsHandler {
 
     @EventHandler
     public void on(OrderCreatedEvent event) {
-        // TODO: 28.02.2023  
+
     }
 }
