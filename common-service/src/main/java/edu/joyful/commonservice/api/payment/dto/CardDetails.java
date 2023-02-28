@@ -1,4 +1,4 @@
-package edu.joyful.commonservice.api.dto;
+package edu.joyful.commonservice.api.payment.dto;
 
 import lombok.Builder;
 import lombok.Data;
