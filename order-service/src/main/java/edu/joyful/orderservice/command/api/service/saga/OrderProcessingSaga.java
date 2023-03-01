@@ -1,14 +1,21 @@
 package edu.joyful.orderservice.command.api.service.saga;
 
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.modelling.saga.SagaEventHandler;
 import org.axonframework.modelling.saga.StartSaga;
+import org.axonframework.queryhandling.QueryGateway;
 import org.axonframework.spring.stereotype.Saga;
 
 @Slf4j
 @Saga
+@RequiredArgsConstructor
 public class OrderProcessingSaga {
+
+    private final CommandGateway commandGateway;
+    private final QueryGateway queryGateway;
 
     @StartSaga
     @SagaEventHandler(associationProperty = "orderId")
