@@ -36,7 +36,7 @@ public class OrderProcessingSaga {
                     .join();
         } catch (Exception e) {
             log.error(e.getMessage());
-            // TODO: 01.03.2023 start compensation transaction
+            // TODO: 01.03.2023 start compensation transaction for order command
         }
 
         final ValidatePaymentCommand paymentCommand = ValidatePaymentCommand.builder()
