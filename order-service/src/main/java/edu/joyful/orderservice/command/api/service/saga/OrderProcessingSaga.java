@@ -1,7 +1,7 @@
 package edu.joyful.orderservice.command.api.service.saga;
 
 import edu.joyful.commonservice.api.payment.command.ValidatePaymentCommand;
-import edu.joyful.commonservice.api.user.dto.UserDto;
+import edu.joyful.commonservice.api.user.UserDto;
 import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
 import lombok.RequiredArgsConstructor;
