@@ -1,9 +1,11 @@
 package edu.joyful.shipmentservice.model.aggregate;
 
+import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
 import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
 import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
@@ -29,5 +31,12 @@ public class ShipmentAggregate {
                 .build();
 
         AggregateLifecycle.apply(event);
+    }
+
+    @EventSourcingHandler
+    public void on(OrderShippedEvent event) {
+        shipmentId = event.getShipmentId();
+        orderId = event.getOrderId();
+        shipmentStatus = event.getShipmentStatus();
     }
 }
