@@ -6,6 +6,7 @@ import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
 import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
 import edu.joyful.commonservice.api.user.UserDto;
 import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
+import edu.joyful.orderservice.command.api.model.command.CompleteOrderCommand;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -74,6 +75,11 @@ public class OrderProcessingSaga {
     @SagaEventHandler(associationProperty = "orderId")
     public void handleOrderShipped(OrderShippedEvent event) {
         log.info("OrderShippedEvent in SAGA for orderId: {}", event.getOrderId());
+
+        final CompleteOrderCommand orderCommand = CompleteOrderCommand.builder()
+                .orderId(event.getOrderId())
+                .orderStatus("APPROVED")
+                .build();
 
         commandGateway.sendAndWait(orderCommand);
     }
