@@ -2,6 +2,7 @@ package edu.joyful.orderservice.command.api.service.saga;
 
 import edu.joyful.commonservice.api.payment.command.ValidatePaymentCommand;
 import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
+import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
 import edu.joyful.commonservice.api.user.UserDto;
 import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
@@ -50,9 +51,6 @@ public class OrderProcessingSaga {
 
         commandGateway.sendAndWait(paymentCommand);
 
-        // TODO: 01.03.2023 handle paymentCommand in payment handler
-        // TODO: 28.02.2023 get shipping info from shipment-service
-        // TODO: 28.02.2023 ship command create
         // TODO: 01.03.2023 handle ship command in shipment handler
 
         // TODO: 28.02.2023 complete order command
@@ -63,7 +61,12 @@ public class OrderProcessingSaga {
     @SagaEventHandler(associationProperty = "orderId")
     public void handlePaymentProcessed(PaymentProcessedEvent event) {
         log.info("PaymentProcessedEvent in SAGA for orderId: {}", event.getOrderId());
-        
 
+        final ShipOrderCommand shipmentCommand = ShipOrderCommand.builder()
+                .orderId(event.getOrderId())
+                .shipmentId(randomUUID().toString())
+                .build();
+
+        commandGateway.sendAndWait(shipmentCommand);
     }
 }
