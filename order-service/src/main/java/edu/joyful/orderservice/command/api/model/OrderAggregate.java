@@ -44,7 +44,7 @@ public class OrderAggregate {
                 .orderId(command.getOrderId())
                 .orderStatus(command.getOrderStatus())
                 .build();
-        
+
         AggregateLifecycle.apply(event);
     }
 
@@ -57,5 +57,10 @@ public class OrderAggregate {
         quantity = event.getQuantity();
         orderStatus = event.getOrderStatus();
 
+    }
+
+    @EventSourcingHandler
+    public void on(OrderCompletedEvent event) {
+        orderStatus = event.getOrderStatus();
     }
 }
