@@ -7,11 +7,13 @@ import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
 import edu.joyful.commonservice.api.user.UserDto;
 import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
 import edu.joyful.orderservice.command.api.model.command.CompleteOrderCommand;
+import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
+import org.axonframework.modelling.saga.EndSaga;
 import org.axonframework.modelling.saga.SagaEventHandler;
 import org.axonframework.modelling.saga.StartSaga;
 import org.axonframework.queryhandling.QueryGateway;
@@ -82,5 +84,11 @@ public class OrderProcessingSaga {
                 .build();
 
         commandGateway.sendAndWait(orderCommand);
+    }
+
+    @EndSaga
+    @SagaEventHandler(associationProperty = "orderId")
+    public void handleOrderCompleted(OrderCompletedEvent event) {
+        log.info("OrderCompletedEvent in SAGA for orderId: {}", event.getOrderId());
     }
 }
