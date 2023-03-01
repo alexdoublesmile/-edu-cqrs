@@ -1,6 +1,5 @@
-package edu.joyful.shipmentservice.model.aggregate;
+package edu.joyful.shipmentservice.model;
 
-import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
 import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
 import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
 import lombok.extern.slf4j.Slf4j;
