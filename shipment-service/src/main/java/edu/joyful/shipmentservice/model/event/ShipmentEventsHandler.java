@@ -1,6 +1,7 @@
 package edu.joyful.shipmentservice.model.event;
 
 import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
+import edu.joyful.shipmentservice.repository.ShipmentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
