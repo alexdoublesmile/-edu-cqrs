@@ -1,9 +1,11 @@
 package edu.joyful.shipmentservice.model.event;
 
 import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
+import edu.joyful.shipmentservice.model.entity.Shipment;
 import edu.joyful.shipmentservice.repository.ShipmentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -14,6 +16,10 @@ public class ShipmentEventsHandler {
     private final ShipmentRepository shipmentRepository;
 
     public void on(OrderShippedEvent event) {
-        shipmentRepository.save();
+        Shipment shipment = new Shipment();
+
+        BeanUtils.copyProperties(event, shipment);
+
+        shipmentRepository.save(shipment);
     }
 }
