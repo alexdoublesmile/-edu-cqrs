@@ -11,6 +11,7 @@ public class UserProjection {
 
     @QueryHandler
     public UserDto getUserPaymentDetails(GetUserPaymentDetailsQuery query) {
+        // TODO: 01.03.2023 do all this from DB
         final CardDetails card = CardDetails.builder()
                 .cardNumber("123456")
                 .name("Alex")
@@ -19,7 +20,7 @@ public class UserProjection {
                 .cvv(111)
                 .build();
 
-        UserDto.builder()
+        return UserDto.builder()
                 .userId(query.getUserId())
                 .firstName("Alex")
                 .lastName("Smith")
