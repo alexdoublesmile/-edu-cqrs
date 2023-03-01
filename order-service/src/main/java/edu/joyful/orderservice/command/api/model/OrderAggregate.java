@@ -37,7 +37,7 @@ public class OrderAggregate {
     }
 
     @CommandHandler
-    public void handleCompleteOrder(CompleteOrderCommand command) {
+    public void handle(CompleteOrderCommand command) {
         // TODO: 28.02.2023 validate command
 
         final OrderCompletedEvent event = OrderCompletedEvent.builder()
