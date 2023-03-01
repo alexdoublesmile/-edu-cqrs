@@ -1,9 +1,11 @@
 package edu.joyful.paymentservice.model;
 
 import edu.joyful.commonservice.api.payment.command.ValidatePaymentCommand;
+import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 
 @Slf4j
@@ -20,5 +22,16 @@ public class PaymentAggregate {
 
     @CommandHandler
     public PaymentAggregate(ValidatePaymentCommand command) {
+        // TODO: 01.03.2023 validate payment details
+        log.info("Executing ValidatePaymentCommand for orderId: {} and paymentId: {}",
+                command.getOrderId(), command.getPaymentId());
+
+        final PaymentProcessedEvent event = PaymentProcessedEvent.builder()
+                .orderId(command.getOrderId())
+                .paymentId(command.getPaymentId())
+                .build();
+
+        AggregateLifecycle.apply(event);
+        log.info("PaymentProcessedEvent Applied");
     }
 }
