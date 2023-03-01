@@ -3,6 +3,7 @@ package edu.joyful.orderservice.command.api.service.saga;
 import edu.joyful.commonservice.api.payment.command.ValidatePaymentCommand;
 import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
 import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
+import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
 import edu.joyful.commonservice.api.user.UserDto;
 import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
@@ -68,5 +69,12 @@ public class OrderProcessingSaga {
                 .build();
 
         commandGateway.sendAndWait(shipmentCommand);
+    }
+
+    @SagaEventHandler(associationProperty = "orderId")
+    public void handleOrderShipped(OrderShippedEvent event) {
+        log.info("OrderShippedEvent in SAGA for orderId: {}", event.getOrderId());
+
+        commandGateway.sendAndWait(orderCommand);
     }
 }
