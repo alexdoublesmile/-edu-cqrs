@@ -28,7 +28,9 @@ public class OrderProcessingSaga {
     public void handleOrderCreated(OrderCreatedEvent event) {
         log.info("OrderCreatedEvent in SAGA for orderId: {}", event.getOrderId());
 
-        final GetUserPaymentDetailsQuery userQuery = new GetUserPaymentDetailsQuery(event.getUserId());
+        final GetUserPaymentDetailsQuery userQuery = GetUserPaymentDetailsQuery.builder()
+                .userId(event.getUserId())
+                .build();
 
         UserDto userDto = null;
         try {
