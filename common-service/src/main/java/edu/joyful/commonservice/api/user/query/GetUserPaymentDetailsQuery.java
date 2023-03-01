@@ -1,10 +1,12 @@
 package edu.joyful.commonservice.api.user.query;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class GetUserPaymentDetailsQuery {
     private String userId;
 }
