@@ -21,4 +21,13 @@ public class OrderEventsHandler {
 
         orderRepository.save(order);
     }
+
+    @EventHandler
+    public void on(OrderCompletedEvent event) {
+        final Order order = orderRepository.findById(event.getOrderId()).orElseThrow();
+
+        order.setOrderStatus(event.getOrderStatus());
+
+        orderRepository.save(order);
+    }
 }
