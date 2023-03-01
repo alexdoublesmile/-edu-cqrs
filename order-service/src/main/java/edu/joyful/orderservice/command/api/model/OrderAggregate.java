@@ -1,5 +1,6 @@
 package edu.joyful.orderservice.command.api.model;
 
+import edu.joyful.orderservice.command.api.model.command.CompleteOrderCommand;
 import edu.joyful.orderservice.command.api.model.command.CreateOrderCommand;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
@@ -28,6 +29,17 @@ public class OrderAggregate {
         // TODO: 28.02.2023 validate command
 
         final OrderCreatedEvent event = new OrderCreatedEvent();
+
+        BeanUtils.copyProperties(command, event);
+
+        AggregateLifecycle.apply(event);
+    }
+
+    @CommandHandler
+    public void handleCompleteOrder(CompleteOrderCommand command) {
+        // TODO: 28.02.2023 validate command
+
+        final OrderCompletedEvent event = new OrderCompletedEvent();
 
         BeanUtils.copyProperties(command, event);
 
