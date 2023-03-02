@@ -23,9 +23,9 @@ public class PaymentAggregate {
 
     @CommandHandler
     public PaymentAggregate(ValidatePaymentCommand command) {
-        // TODO: 01.03.2023 validate payment details
         log.info("Executing ValidatePaymentCommand for orderId: {} and paymentId: {}",
                 command.getOrderId(), command.getPaymentId());
+        // TODO: 01.03.2023 validate payment details
 
         final PaymentProcessedEvent event = PaymentProcessedEvent.builder()
                 .orderId(command.getOrderId())

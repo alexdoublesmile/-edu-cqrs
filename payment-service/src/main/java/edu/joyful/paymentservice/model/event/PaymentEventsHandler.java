@@ -19,11 +19,12 @@ public class PaymentEventsHandler {
 
     @EventHandler
     public void on(PaymentProcessedEvent event) {
-        Payment payment = new Payment();
-        payment.setOrderId(event.getOrderId());
-        payment.setPaymentId(event.getPaymentId());
-        payment.setPaymentStatus("CREATED");
-        payment.setPaymentTimestamp(new Date());
+        Payment payment = Payment.builder()
+                .orderId(event.getOrderId())
+                .paymentId(event.getPaymentId())
+                .paymentStatus("COMPLETED")
+                .paymentTimestamp(new Date())
+                .build();
 
         paymentRepository.save(payment);
     }

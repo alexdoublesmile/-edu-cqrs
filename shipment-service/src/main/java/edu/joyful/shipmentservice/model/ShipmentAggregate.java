@@ -23,9 +23,11 @@ public class ShipmentAggregate {
 
     @CommandHandler
     public ShipmentAggregate(ShipOrderCommand command) {
+        // TODO: 01.03.2023 validate payment details
+
         final OrderShippedEvent event = OrderShippedEvent.builder()
-                .orderId(command.getOrderId())
                 .shipmentId(command.getShipmentId())
+                .orderId(command.getOrderId())
                 .shipmentStatus("COMPLETED")
                 .build();
 
