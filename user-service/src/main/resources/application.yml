@@ -4,8 +4,8 @@ server:
 spring:
   main:
     banner-mode: off
-  jpa:
-    open-in-view: false
+#  jpa:
+#    open-in-view: false
 #    show-sql: true
 #    hibernate:
 #      ddl-auto: update
