@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final QueryGateway gateway;
+    private final transient QueryGateway gateway;
 
     @GetMapping("/{userId}")
     public UserDto getUserPaymentDetails(@PathVariable String userId) {

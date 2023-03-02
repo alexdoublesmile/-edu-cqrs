@@ -20,3 +20,7 @@ Content-Type: application/json
   "addressId": "321321",
   "quantity": "15"
 }
+
+###
+GET http://localhost:8090/users/111
+Content-Type: application/json
