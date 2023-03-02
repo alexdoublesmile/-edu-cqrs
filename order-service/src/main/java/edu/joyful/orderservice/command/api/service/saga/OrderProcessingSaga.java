@@ -9,6 +9,8 @@ import edu.joyful.commonservice.api.user.UserDto;
 import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
 import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -23,11 +25,13 @@ import static java.util.UUID.randomUUID;
 
 @Slf4j
 @Saga
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderProcessingSaga {
 
-    private final CommandGateway commandGateway;
-    private final QueryGateway queryGateway;
+    private CommandGateway commandGateway;
+    private QueryGateway queryGateway;
+
 
     @StartSaga
     @SagaEventHandler(associationProperty = "orderId")

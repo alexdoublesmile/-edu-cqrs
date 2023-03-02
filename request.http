@@ -9,3 +9,14 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8081/products
+
+###
+POST http://localhost:8081/orders
+Content-Type: application/json
+
+{
+  "productId": "123123123",
+  "userId": "111",
+  "addressId": "321321",
+  "quantity": "15"
+}
