@@ -8,6 +8,7 @@ import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
 import edu.joyful.commonservice.api.user.UserDto;
 import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
 import edu.joyful.orderservice.command.api.model.command.CancelOrderCommand;
+import edu.joyful.orderservice.command.api.model.event.OrderCancelledEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
 import lombok.NoArgsConstructor;
@@ -106,5 +107,11 @@ public class OrderProcessingSaga {
     @SagaEventHandler(associationProperty = "orderId")
     public void handle(OrderCompletedEvent event) {
         log.info("OrderCompletedEvent in SAGA for orderId: {}", event.getOrderId());
+    }
+
+    @EndSaga
+    @SagaEventHandler(associationProperty = "orderId")
+    public void handle(OrderCancelledEvent event) {
+        log.info("OrderCancelledEvent in SAGA for orderId: {}", event.getOrderId());
     }
 }
