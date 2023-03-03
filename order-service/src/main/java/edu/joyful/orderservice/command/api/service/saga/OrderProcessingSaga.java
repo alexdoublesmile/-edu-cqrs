@@ -86,8 +86,13 @@ public class OrderProcessingSaga {
 
         } catch (Exception e) {
             log.error(e.getMessage());
-            // TODO: 01.03.2023 start compensation transaction for order command
+
+            cancelPaymentCommand(event);
         }
+
+    }
+
+    private void cancelPaymentCommand(PaymentProcessedEvent event) {
 
     }
 
