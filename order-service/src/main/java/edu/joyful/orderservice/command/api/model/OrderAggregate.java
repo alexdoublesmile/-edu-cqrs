@@ -1,7 +1,9 @@
 package edu.joyful.orderservice.command.api.model;
 
 import edu.joyful.commonservice.api.order.command.CompleteOrderCommand;
+import edu.joyful.orderservice.command.api.model.command.CancelOrderCommand;
 import edu.joyful.orderservice.command.api.model.command.CreateOrderCommand;
+import edu.joyful.orderservice.command.api.model.event.OrderCancelledEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
 import lombok.NoArgsConstructor;
@@ -40,6 +42,18 @@ public class OrderAggregate {
         // TODO: 28.02.2023 validate command
 
         final OrderCompletedEvent event = OrderCompletedEvent.builder()
+                .orderId(command.getOrderId())
+                .orderStatus(command.getOrderStatus())
+                .build();
+
+        AggregateLifecycle.apply(event);
+    }
+
+    @CommandHandler
+    public void handle(CancelOrderCommand command) {
+        // TODO: 28.02.2023 validate command
+
+        final OrderCancelledEvent event = OrderCancelledEvent.builder()
                 .orderId(command.getOrderId())
                 .orderStatus(command.getOrderStatus())
                 .build();
