@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.9</version>
+        <version>2.5.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>edu.joyful</groupId>
@@ -20,7 +20,7 @@
         <version-date>${maven.build.timestamp}</version-date>
         <maven.build.timestamp.format>dd-MM-yyyy HH:mm</maven.build.timestamp.format>
 
-        <axon.version>4.7.1</axon.version>
+        <axon.version>4.5.3</axon.version>
         <guava.version>31.1-jre</guava.version>
     </properties>
 
