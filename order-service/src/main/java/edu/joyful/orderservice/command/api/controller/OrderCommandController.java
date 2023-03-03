@@ -15,7 +15,7 @@ import static java.util.UUID.randomUUID;
 @RequestMapping("/orders")
 @RequiredArgsConstructor
 public class OrderCommandController {
-    private final CommandGateway gateway;
+    private final transient CommandGateway gateway;
 
     @PostMapping
     public String createOrder(@RequestBody OrderRestModel order) {
