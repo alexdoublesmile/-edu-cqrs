@@ -57,4 +57,9 @@ public class PaymentAggregate {
         paymentId = event.getPaymentId();
         orderId = event.getOrderId();
     }
+
+    @EventSourcingHandler
+    public void on(PaymentCancelledEvent event) {
+        paymentStatus = event.getPaymentStatus();
+    }
 }
