@@ -55,7 +55,7 @@ public class OrderAggregate {
 
         final OrderCancelledEvent event = OrderCancelledEvent.builder()
                 .orderId(command.getOrderId())
-                .orderStatus("CANCELLED")
+                .orderStatus(command.getOrderId())
                 .build();
 
         AggregateLifecycle.apply(event);

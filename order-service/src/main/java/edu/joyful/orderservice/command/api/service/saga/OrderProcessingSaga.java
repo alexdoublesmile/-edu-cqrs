@@ -7,6 +7,7 @@ import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
 import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
 import edu.joyful.commonservice.api.user.UserDto;
 import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
+import edu.joyful.orderservice.command.api.model.command.CancelOrderCommand;
 import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
 import lombok.NoArgsConstructor;
@@ -62,6 +63,11 @@ public class OrderProcessingSaga {
     }
 
     private void cancelOrderCommand(String orderId) {
+        final CancelOrderCommand cancelCommand = CancelOrderCommand.builder()
+                .orderId(orderId)
+                .orderStatus("CANCELLED")
+                .build();
+
         commandGateway.sendAndWait(cancelCommand);
     }
 
