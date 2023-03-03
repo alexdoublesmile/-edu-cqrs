@@ -1,13 +1,17 @@
 package edu.joyful.commonservice.api.payment.command;
 
-import lombok.Value;
+import lombok.Builder;
+import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-@Value
+@Data
+@Builder
 public class CancelPaymentCommand {
 
     @TargetAggregateIdentifier
-    String paymentId;
-    String orderId;
-    String paymentStatus = "CANCELLED";
+    private String paymentId;
+    private String orderId;
+
+    @Builder.Default
+    private final String paymentStatus = "CANCELLED";
 }

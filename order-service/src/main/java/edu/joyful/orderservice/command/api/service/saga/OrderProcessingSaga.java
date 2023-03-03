@@ -94,10 +94,10 @@ public class OrderProcessingSaga {
     }
 
     private void cancelPaymentCommand(PaymentProcessedEvent event) {
-        CancelPaymentCommand cancelCommand = new CancelPaymentCommand(
-                event.getPaymentId(),
-                event.getOrderId()
-        );
+        CancelPaymentCommand cancelCommand = CancelPaymentCommand.builder()
+                .paymentId(event.getPaymentId())
+                .orderId(event.getOrderId())
+                .build();
 
         commandGateway.sendAndWait(cancelCommand);
     }
