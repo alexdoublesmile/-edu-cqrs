@@ -1,5 +1,6 @@
 package edu.joyful.paymentservice.model.event;
 
+import edu.joyful.commonservice.api.payment.event.PaymentCancelledEvent;
 import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
 import edu.joyful.paymentservice.model.entity.Payment;
 import edu.joyful.paymentservice.repository.PaymentRepository;
@@ -25,6 +26,15 @@ public class PaymentEventsHandler {
                 .paymentStatus("COMPLETED")
                 .paymentTimestamp(new Date())
                 .build();
+
+        paymentRepository.save(payment);
+    }
+
+    @EventHandler
+    public void on(PaymentCancelledEvent event) {
+        final Payment payment = paymentRepository.findById(event.getPaymentId()).orElseThrow();
+
+        payment.setPaymentStatus(event.getPaymentStatus());
 
         paymentRepository.save(payment);
     }
