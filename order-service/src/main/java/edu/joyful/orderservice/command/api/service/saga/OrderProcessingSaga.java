@@ -44,12 +44,12 @@ public class OrderProcessingSaga {
 
         UserDto userDto = null;
         try {
-//            userDto = getTestUser(event.getUserId());
             userDto = queryGateway.query(userQuery, ResponseTypes.instanceOf(UserDto.class))
                     .join();
         } catch (Exception e) {
             log.error(e.getMessage());
-            // TODO: 01.03.2023 start compensation transaction for order command
+
+            cancelOrderCommand(event.getOrderId());
         }
 
         final ValidatePaymentCommand paymentCommand = ValidatePaymentCommand.builder()
@@ -59,6 +59,10 @@ public class OrderProcessingSaga {
                 .build();
 
         commandGateway.sendAndWait(paymentCommand);
+    }
+
+    private void cancelOrderCommand(String orderId) {
+        commandGateway.sendAndWait(cancelCommand);
     }
 
     @SagaEventHandler(associationProperty = "orderId")
