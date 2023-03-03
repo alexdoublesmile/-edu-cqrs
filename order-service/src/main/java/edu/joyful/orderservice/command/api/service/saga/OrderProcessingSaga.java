@@ -1,6 +1,7 @@
 package edu.joyful.orderservice.command.api.service.saga;
 
 import edu.joyful.commonservice.api.order.command.CompleteOrderCommand;
+import edu.joyful.commonservice.api.payment.CardDetails;
 import edu.joyful.commonservice.api.payment.command.ValidatePaymentCommand;
 import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
 import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
@@ -20,18 +21,22 @@ import org.axonframework.modelling.saga.SagaEventHandler;
 import org.axonframework.modelling.saga.StartSaga;
 import org.axonframework.queryhandling.QueryGateway;
 import org.axonframework.spring.stereotype.Saga;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static java.util.UUID.randomUUID;
 
 @Slf4j
 @Saga
-@AllArgsConstructor
-@NoArgsConstructor
 public class OrderProcessingSaga {
 
-    private CommandGateway commandGateway;
-    private QueryGateway queryGateway;
+    @Autowired
+    private transient CommandGateway commandGateway;
 
+    @Autowired
+    private transient QueryGateway queryGateway;
+
+    public OrderProcessingSaga() {
+    }
 
     @StartSaga
     @SagaEventHandler(associationProperty = "orderId")
@@ -44,8 +49,9 @@ public class OrderProcessingSaga {
 
         UserDto userDto = null;
         try {
-            userDto = queryGateway.query(userQuery, ResponseTypes.instanceOf(UserDto.class))
-                    .join();
+            userDto = getTestUser(event.getUserId());
+//            userDto = queryGateway.query(userQuery, ResponseTypes.instanceOf(UserDto.class))
+//                    .join();
         } catch (Exception e) {
             log.error(e.getMessage());
             // TODO: 01.03.2023 start compensation transaction for order command
@@ -58,6 +64,23 @@ public class OrderProcessingSaga {
                 .build();
 
         commandGateway.sendAndWait(paymentCommand);
+    }
+
+    private UserDto getTestUser(String userId) {
+        final CardDetails card = CardDetails.builder()
+                .cardNumber("123456")
+                .name("Alex")
+                .validUntilMonth(01)
+                .validUntilYear(2022)
+                .cvv(111)
+                .build();
+
+        return UserDto.builder()
+                .userId(userId)
+                .firstName("Alex")
+                .lastName("Smith")
+                .cardDetails(card)
+                .build();
     }
 
     @SagaEventHandler(associationProperty = "orderId")
