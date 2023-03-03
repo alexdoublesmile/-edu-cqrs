@@ -1,6 +1,7 @@
 package edu.joyful.orderservice.command.api.service.saga;
 
 import edu.joyful.commonservice.api.order.command.CompleteOrderCommand;
+import edu.joyful.commonservice.api.payment.command.CancelPaymentCommand;
 import edu.joyful.commonservice.api.payment.command.ValidatePaymentCommand;
 import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
 import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
@@ -93,7 +94,12 @@ public class OrderProcessingSaga {
     }
 
     private void cancelPaymentCommand(PaymentProcessedEvent event) {
+        CancelPaymentCommand cancelCommand = new CancelPaymentCommand(
+                event.getPaymentId(),
+                event.getOrderId()
+        );
 
+        commandGateway.sendAndWait(cancelCommand);
     }
 
     @SagaEventHandler(associationProperty = "orderId")
