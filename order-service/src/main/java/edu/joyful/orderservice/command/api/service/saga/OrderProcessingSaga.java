@@ -1,7 +1,6 @@
 package edu.joyful.orderservice.command.api.service.saga;
 
 import edu.joyful.commonservice.api.order.command.CompleteOrderCommand;
-import edu.joyful.commonservice.api.payment.CardDetails;
 import edu.joyful.commonservice.api.payment.command.ValidatePaymentCommand;
 import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
 import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
@@ -10,9 +9,7 @@ import edu.joyful.commonservice.api.user.UserDto;
 import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
 import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
@@ -27,6 +24,7 @@ import static java.util.UUID.randomUUID;
 
 @Slf4j
 @Saga
+@NoArgsConstructor
 public class OrderProcessingSaga {
 
     @Autowired
@@ -34,9 +32,6 @@ public class OrderProcessingSaga {
 
     @Autowired
     private transient QueryGateway queryGateway;
-
-    public OrderProcessingSaga() {
-    }
 
     @StartSaga
     @SagaEventHandler(associationProperty = "orderId")
@@ -49,9 +44,9 @@ public class OrderProcessingSaga {
 
         UserDto userDto = null;
         try {
-            userDto = getTestUser(event.getUserId());
-//            userDto = queryGateway.query(userQuery, ResponseTypes.instanceOf(UserDto.class))
-//                    .join();
+//            userDto = getTestUser(event.getUserId());
+            userDto = queryGateway.query(userQuery, ResponseTypes.instanceOf(UserDto.class))
+                    .join();
         } catch (Exception e) {
             log.error(e.getMessage());
             // TODO: 01.03.2023 start compensation transaction for order command
@@ -64,23 +59,6 @@ public class OrderProcessingSaga {
                 .build();
 
         commandGateway.sendAndWait(paymentCommand);
-    }
-
-    private UserDto getTestUser(String userId) {
-        final CardDetails card = CardDetails.builder()
-                .cardNumber("123456")
-                .name("Alex")
-                .validUntilMonth(01)
-                .validUntilYear(2022)
-                .cvv(111)
-                .build();
-
-        return UserDto.builder()
-                .userId(userId)
-                .firstName("Alex")
-                .lastName("Smith")
-                .cardDetails(card)
-                .build();
     }
 
     @SagaEventHandler(associationProperty = "orderId")

@@ -4,6 +4,7 @@ import edu.joyful.commonservice.api.order.command.CompleteOrderCommand;
 import edu.joyful.orderservice.command.api.model.command.CreateOrderCommand;
 import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
+import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -12,6 +13,7 @@ import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
 @Aggregate
+@NoArgsConstructor
 public class OrderAggregate {
 
     @AggregateIdentifier
@@ -21,9 +23,6 @@ public class OrderAggregate {
     private String addressId;
     private Integer quantity;
     private String orderStatus;
-
-    public OrderAggregate() {
-    }
 
     @CommandHandler
     public OrderAggregate(CreateOrderCommand command) {
