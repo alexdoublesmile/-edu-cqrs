@@ -1,7 +1,7 @@
 package edu.joyful.shipmentservice.model;
 
-import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
-import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
+import edu.joyful.commonservice.api.command.ShipOrderCommand;
+import edu.joyful.commonservice.api.event.OrderShippedEvent;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;

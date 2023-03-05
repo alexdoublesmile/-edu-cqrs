@@ -1,6 +1,6 @@
 package edu.joyful.shipmentservice.model.event;
 
-import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
+import edu.joyful.commonservice.api.event.OrderShippedEvent;
 import edu.joyful.shipmentservice.model.entity.Shipment;
 import edu.joyful.shipmentservice.repository.ShipmentRepository;
 import lombok.RequiredArgsConstructor;

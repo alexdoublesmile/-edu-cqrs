@@ -1,9 +1,9 @@
 package edu.joyful.paymentservice.model;
 
-import edu.joyful.commonservice.api.payment.command.CancelPaymentCommand;
-import edu.joyful.commonservice.api.payment.command.ValidatePaymentCommand;
-import edu.joyful.commonservice.api.payment.event.PaymentCancelledEvent;
-import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
+import edu.joyful.commonservice.api.command.CancelPaymentCommand;
+import edu.joyful.commonservice.api.command.ValidatePaymentCommand;
+import edu.joyful.commonservice.api.event.PaymentCancelledEvent;
+import edu.joyful.commonservice.api.event.PaymentProcessedEvent;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;

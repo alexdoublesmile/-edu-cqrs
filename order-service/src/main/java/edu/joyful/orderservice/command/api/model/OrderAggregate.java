@@ -1,6 +1,6 @@
 package edu.joyful.orderservice.command.api.model;
 
-import edu.joyful.commonservice.api.order.command.CompleteOrderCommand;
+import edu.joyful.commonservice.api.command.CompleteOrderCommand;
 import edu.joyful.orderservice.command.api.model.command.CancelOrderCommand;
 import edu.joyful.orderservice.command.api.model.command.CreateOrderCommand;
 import edu.joyful.orderservice.command.api.model.event.OrderCancelledEvent;

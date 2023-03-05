@@ -1,6 +1,6 @@
-package edu.joyful.commonservice.api.user;
+package edu.joyful.commonservice.api.dto;
 
-import edu.joyful.commonservice.api.payment.CardDetails;
+import edu.joyful.commonservice.api.dto.CardDetails;
 import lombok.Builder;
 import lombok.Data;
 

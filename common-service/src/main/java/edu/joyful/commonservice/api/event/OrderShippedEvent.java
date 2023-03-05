@@ -1,4 +1,4 @@
-package edu.joyful.commonservice.api.shipment.event;
+package edu.joyful.commonservice.api.event;
 
 import lombok.Builder;
 import lombok.Data;

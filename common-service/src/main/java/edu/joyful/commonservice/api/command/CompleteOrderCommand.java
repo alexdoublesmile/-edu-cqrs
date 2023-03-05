@@ -1,4 +1,4 @@
-package edu.joyful.commonservice.api.order.command;
+package edu.joyful.commonservice.api.command;
 
 import lombok.Builder;
 import lombok.Data;

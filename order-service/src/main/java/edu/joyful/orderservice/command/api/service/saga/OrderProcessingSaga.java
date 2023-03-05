@@ -1,14 +1,14 @@
 package edu.joyful.orderservice.command.api.service.saga;
 
-import edu.joyful.commonservice.api.order.command.CompleteOrderCommand;
-import edu.joyful.commonservice.api.payment.command.CancelPaymentCommand;
-import edu.joyful.commonservice.api.payment.command.ValidatePaymentCommand;
-import edu.joyful.commonservice.api.payment.event.PaymentCancelledEvent;
-import edu.joyful.commonservice.api.payment.event.PaymentProcessedEvent;
-import edu.joyful.commonservice.api.shipment.command.ShipOrderCommand;
-import edu.joyful.commonservice.api.shipment.event.OrderShippedEvent;
-import edu.joyful.commonservice.api.user.UserDto;
-import edu.joyful.commonservice.api.user.query.GetUserPaymentDetailsQuery;
+import edu.joyful.commonservice.api.command.CompleteOrderCommand;
+import edu.joyful.commonservice.api.command.CancelPaymentCommand;
+import edu.joyful.commonservice.api.command.ValidatePaymentCommand;
+import edu.joyful.commonservice.api.event.PaymentCancelledEvent;
+import edu.joyful.commonservice.api.event.PaymentProcessedEvent;
+import edu.joyful.commonservice.api.command.ShipOrderCommand;
+import edu.joyful.commonservice.api.event.OrderShippedEvent;
+import edu.joyful.commonservice.api.dto.UserDto;
+import edu.joyful.commonservice.api.query.GetUserPaymentDetailsQuery;
 import edu.joyful.orderservice.command.api.model.command.CancelOrderCommand;
 import edu.joyful.orderservice.command.api.model.event.OrderCancelledEvent;
 import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;

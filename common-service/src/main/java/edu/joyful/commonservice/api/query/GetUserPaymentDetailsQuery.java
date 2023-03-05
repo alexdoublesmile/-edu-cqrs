@@ -1,4 +1,4 @@
-package edu.joyful.commonservice.api.user.query;
+package edu.joyful.commonservice.api.query;
 
 import lombok.Builder;
 import lombok.Data;
