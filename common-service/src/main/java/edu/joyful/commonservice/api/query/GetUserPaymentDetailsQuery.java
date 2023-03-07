@@ -6,5 +6,6 @@ import lombok.Data;
 @Data
 @Builder
 public class GetUserPaymentDetailsQuery {
+
     private String userId;
 }
