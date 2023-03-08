@@ -1,8 +1,8 @@
-package edu.joyful.paymentservice.model.event;
+package edu.joyful.paymentservice.service;
 
 import edu.joyful.commonservice.api.event.PaymentCancelledEvent;
 import edu.joyful.commonservice.api.event.PaymentProcessedEvent;
-import edu.joyful.paymentservice.model.entity.Payment;
+import edu.joyful.paymentservice.model.Payment;
 import edu.joyful.paymentservice.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

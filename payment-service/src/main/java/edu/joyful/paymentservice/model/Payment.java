@@ -1,4 +1,4 @@
-package edu.joyful.paymentservice.model.entity;
+package edu.joyful.paymentservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
