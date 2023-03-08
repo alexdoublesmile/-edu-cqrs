@@ -1,6 +1,6 @@
 package edu.joyful.orderservice.command.api.controller;
 
-import edu.joyful.commonservice.api.dto.OrderRestModel;
+import edu.joyful.commonservice.api.dto.OrderDto;
 import edu.joyful.commonservice.api.command.CreateOrderCommand;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -19,7 +19,7 @@ public class OrderCommandController {
     private final CommandGateway gateway;
 
     @PostMapping
-    public String createOrder(@RequestBody OrderRestModel order) {
+    public String createOrder(@RequestBody OrderDto order) {
         CreateOrderCommand command = CreateOrderCommand.builder()
                 .orderId(randomUUID().toString())
                 .addressId(order.getAddressId())
