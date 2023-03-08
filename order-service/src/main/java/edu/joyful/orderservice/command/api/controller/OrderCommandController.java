@@ -1,7 +1,7 @@
 package edu.joyful.orderservice.command.api.controller;
 
-import edu.joyful.orderservice.command.api.model.dto.OrderRestModel;
-import edu.joyful.orderservice.command.api.model.command.CreateOrderCommand;
+import edu.joyful.commonservice.api.dto.OrderRestModel;
+import edu.joyful.commonservice.api.command.CreateOrderCommand;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.web.bind.annotation.PostMapping;

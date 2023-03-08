@@ -1,4 +1,4 @@
-package edu.joyful.orderservice.command.api.model.event;
+package edu.joyful.commonservice.api.event;
 
 import lombok.Builder;
 import lombok.Data;

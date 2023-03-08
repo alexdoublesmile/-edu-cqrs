@@ -1,6 +1,9 @@
-package edu.joyful.orderservice.command.api.model.event;
+package edu.joyful.orderservice.command.api.service;
 
-import edu.joyful.orderservice.command.api.model.entity.Order;
+import edu.joyful.commonservice.api.event.OrderCancelledEvent;
+import edu.joyful.commonservice.api.event.OrderCompletedEvent;
+import edu.joyful.commonservice.api.event.OrderCreatedEvent;
+import edu.joyful.orderservice.command.api.model.Order;
 import edu.joyful.orderservice.command.api.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.eventhandling.EventHandler;

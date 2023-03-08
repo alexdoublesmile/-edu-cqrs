@@ -1,11 +1,11 @@
 package edu.joyful.orderservice.command.api.model;
 
 import edu.joyful.commonservice.api.command.CompleteOrderCommand;
-import edu.joyful.orderservice.command.api.model.command.CancelOrderCommand;
-import edu.joyful.orderservice.command.api.model.command.CreateOrderCommand;
-import edu.joyful.orderservice.command.api.model.event.OrderCancelledEvent;
-import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;
-import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
+import edu.joyful.commonservice.api.command.CancelOrderCommand;
+import edu.joyful.commonservice.api.command.CreateOrderCommand;
+import edu.joyful.commonservice.api.event.OrderCancelledEvent;
+import edu.joyful.commonservice.api.event.OrderCompletedEvent;
+import edu.joyful.commonservice.api.event.OrderCreatedEvent;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;

@@ -1,4 +1,4 @@
-package edu.joyful.orderservice.command.api.service.saga;
+package edu.joyful.orderservice.command.api.service;
 
 import edu.joyful.commonservice.api.command.CompleteOrderCommand;
 import edu.joyful.commonservice.api.command.CancelPaymentCommand;
@@ -9,10 +9,10 @@ import edu.joyful.commonservice.api.command.ShipOrderCommand;
 import edu.joyful.commonservice.api.event.OrderShippedEvent;
 import edu.joyful.commonservice.api.dto.UserDto;
 import edu.joyful.commonservice.api.query.GetUserPaymentDetailsQuery;
-import edu.joyful.orderservice.command.api.model.command.CancelOrderCommand;
-import edu.joyful.orderservice.command.api.model.event.OrderCancelledEvent;
-import edu.joyful.orderservice.command.api.model.event.OrderCompletedEvent;
-import edu.joyful.orderservice.command.api.model.event.OrderCreatedEvent;
+import edu.joyful.commonservice.api.command.CancelOrderCommand;
+import edu.joyful.commonservice.api.event.OrderCancelledEvent;
+import edu.joyful.commonservice.api.event.OrderCompletedEvent;
+import edu.joyful.commonservice.api.event.OrderCreatedEvent;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;

@@ -1,4 +1,4 @@
-package edu.joyful.orderservice.command.api.model.entity;
+package edu.joyful.orderservice.command.api.model;
 
 import lombok.Data;
 
