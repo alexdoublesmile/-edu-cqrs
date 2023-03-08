@@ -1,4 +1,4 @@
-package edu.joyful.shipmentservice.model.entity;
+package edu.joyful.shipmentservice.model;
 
 import lombok.Data;
 

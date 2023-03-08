@@ -1,7 +1,7 @@
-package edu.joyful.shipmentservice.model.event;
+package edu.joyful.shipmentservice.service;
 
 import edu.joyful.commonservice.api.event.OrderShippedEvent;
-import edu.joyful.shipmentservice.model.entity.Shipment;
+import edu.joyful.shipmentservice.model.Shipment;
 import edu.joyful.shipmentservice.repository.ShipmentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
