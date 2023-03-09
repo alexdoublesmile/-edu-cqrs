@@ -16,7 +16,7 @@ public class UserProjection {
         final CardDetails card = CardDetails.builder()
                 .cardNumber("123456")
                 .name("Alex")
-                .validUntilMonth(01)
+                .validUntilMonth(1)
                 .validUntilYear(2022)
                 .cvv(111)
                 .build();
