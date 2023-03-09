@@ -79,8 +79,7 @@ public class OrderProcessingSaga {
         log.info("PaymentProcessedEvent in SAGA for orderId: {}", event.getOrderId());
 
         try {
-
-            if (true) throw new Exception("test error");
+//            if (true) throw new Exception("test error");
 
             final ShipOrderCommand shipmentCommand = ShipOrderCommand.builder()
                     .orderId(event.getOrderId())
